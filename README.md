@@ -101,3 +101,7 @@ src/
 npm run lint
 npm run build
 ```
+
+## Лицензия
+
+Проект распространяется по лицензии MIT. Подробнее см. [LICENSE](LICENSE).
