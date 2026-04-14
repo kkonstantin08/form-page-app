@@ -1,36 +1,103 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Form Page App
 
-## Getting Started
+Интерактивная страница с набором полей формы на Next.js. Проект показывает работу базовых и составных UI-полей: текстового ввода, textarea, radio, checkbox, select, multiple select, выбора даты, выбора даты и времени.
 
-First, run the development server:
+## Возможности
+
+- переключение языка интерфейса: русский / английский;
+- светлая и темная тема;
+- управление состояниями каждого поля: `disabled` и `required`;
+- клиентская валидация обязательных полей;
+- автоматический фокус на первое поле с ошибкой;
+- нормализация значений перед отправкой;
+- вывод результата формы в `console.log`;
+- адаптивная верстка под мобильные и десктопные экраны.
+
+## Стек
+
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS
+- shadcn/ui-подход к компонентам
+- Base UI
+- React Day Picker
+- date-fns
+- Lucide React
+
+## Быстрый запуск
+
+Установить зависимости:
+
+```bash
+npm install
+```
+
+Запустить проект в режиме разработки:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+После запуска открыть:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Скрипты
 
-## Learn More
+```bash
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Запускает локальный dev-сервер.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run build
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Собирает production-версию приложения.
 
-## Deploy on Vercel
+```bash
+npm run start
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Запускает собранное приложение.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run lint
+```
+
+Проверяет код через ESLint.
+
+## Структура проекта
+
+```text
+src/
+  app/
+    globals.css      # глобальные стили
+    layout.tsx       # корневой layout
+    page.tsx         # основная страница формы
+  components/
+    ui/              # UI-компоненты
+  lib/
+    utils.ts         # вспомогательные функции
+```
+
+## Как работает форма
+
+Все значения хранятся на клиенте в React state. Для полей выбора итоговое значение нормализуется в массив ID, даже если можно выбрать только один вариант. При отправке форма проверяет обязательные поля, прокручивает страницу к первой ошибке и ставит фокус на проблемный элемент.
+
+Если ошибок нет, в консоль браузера выводится объект с текущими значениями формы.
+
+## Деплой
+
+Проект можно развернуть на Vercel или любом хостинге, который поддерживает Next.js.
+
+Перед деплоем стоит проверить:
+
+```bash
+npm run lint
+npm run build
+```
